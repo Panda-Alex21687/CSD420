@@ -1,0 +1,12 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "java",
+      "name": "Launch JavaFX Cards",
+      "request": "launch",
+      "mainClass": "Baldree_Mod_1_3_JavaFXCards",
+      "vmArgs": "--module-path /Users/alexbaldree/csd/CSD420/javafx-sdk-26-2/lib --add-modules javafx.controls,javafx.fxml"
+    }
+  ]
+}
