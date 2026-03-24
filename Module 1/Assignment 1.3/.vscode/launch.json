@@ -3,10 +3,10 @@
   "configurations": [
     {
       "type": "java",
-      "name": "Launch JavaFX Cards",
+      "name": "Run Baldree_Mod1_3_CSD420",
       "request": "launch",
-      "mainClass": "Baldree_Mod_1_3_JavaFXCards",
-      "vmArgs": "--module-path /Users/alexbaldree/Downloads/javafx-sdk-26-2/lib --add-modules javafx.controls,javafx.fxml"
+      "mainClass": "Baldree_Mod1_3_CSD420",
+      "vmArgs": "--module-path \"/Users/alexbaldree/Downloads/javafx-sdk-26/lib\" --add-modules javafx.controls,javafx.fxml"
     }
   ]
 }
