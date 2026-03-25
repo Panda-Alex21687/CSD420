@@ -22,7 +22,7 @@ import java.util.HashSet;
 import java.util.Random;
 import java.util.Set;
 
-public class Baldree_Mod_1_3_CSD420 extends Application {
+public class Baldree_Mod1_3_CSD420 extends Application {
 
     private final ImageView[] cardViews = new ImageView[4];
     private final Random random = new Random();
