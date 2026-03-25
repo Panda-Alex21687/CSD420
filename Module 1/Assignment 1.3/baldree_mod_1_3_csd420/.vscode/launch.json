@@ -1,0 +1,13 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "java",
+      "name": "Launch JavaFX Cards",
+      "request": "launch",
+      "mainClass": "com.baldree.App",
+      "vmArgs": "--module-path /Users/alexbaldree/Downloads/javafx-sdk-21.0.10/lib --add-modules javafx.controls,javafx.fxml",
+      "console": "integratedTerminal"
+    }
+  ]
+}
