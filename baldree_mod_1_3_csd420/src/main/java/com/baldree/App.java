@@ -10,6 +10,10 @@ package com.baldree;
  * resources/cards folder and are named 1.png through 52.png.
  */
 
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.Collections;
+
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -19,10 +23,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-
-import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.Collections;
 
 public class App extends Application {
 
