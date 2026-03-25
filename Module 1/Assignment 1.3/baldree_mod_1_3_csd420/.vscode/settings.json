@@ -1,13 +1,11 @@
 {
-  "java.project.referencedLibraries": [
-    "/Users/alexbaldree/Downloads/javafx-sdk-21.0.10/lib/**/*.jar"
-  ],
+  "java.configuration.updateBuildConfiguration": "automatic",
+  "java.import.maven.enabled": true,
   "java.configuration.runtimes": [
     {
       "name": "JavaSE-17",
       "path": "/opt/homebrew/Cellar/openjdk@17/17.0.18/libexec/openjdk.jdk/Contents/Home",
       "default": true
     }
-  ],
-  "java.configuration.updateBuildConfiguration": "automatic"
+  ]
 }
