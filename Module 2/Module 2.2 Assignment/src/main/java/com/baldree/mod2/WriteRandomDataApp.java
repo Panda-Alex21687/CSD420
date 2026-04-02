@@ -12,14 +12,8 @@ import java.util.Random;
  * This program creates an array of five random integers and an array of five
  * random double values, then writes them to a file named "Baldree datafile.dat".
  * If the file already exists, the program appends the new data to the end.
- *
- * How the code functions:
- * - A Path object points to the assignment data file.
- * - The program generates five integers and five doubles.
- * - DataOutputStream writes the values in binary format.
- * - The file is created automatically if it does not exist.
- * - If the file already exists, new values are appended.
  */
+
 public class WriteRandomDataApp {
 
     public static void main(String[] args) {

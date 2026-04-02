@@ -7,17 +7,13 @@ import java.util.List;
 /**
  * Name: Alex Baldree
  * Course: CSD420
- * Assignment: Module 2 Random Data File (Reader)
+ * Assignment: Module 2 Random Data File
+ *
  *
  * This program reads the data stored in "Baldree datafile.dat" and displays
  * every record that has been written to the file.
- *
- * How the code functions:
- * - A Path object points to the assignment data file.
- * - DataInputStream reads values back in the same order they were written.
- * - The reader continues until the end of the file is reached.
- * - Each record is displayed as one set of five integers and five doubles.
  */
+ 
 public class ReadRandomDataApp {
 
     public static void main(String[] args) {
