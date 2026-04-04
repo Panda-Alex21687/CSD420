@@ -1,14 +1,19 @@
 package com.baldree.mod2;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
 import java.util.Random;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
 
+/**
+ * Tests the file utility methods to ensure the assignment works correctly.
+ */
 class RandomDataFileUtilTest {
 
     @Test
@@ -21,9 +26,9 @@ class RandomDataFileUtilTest {
         assertTrue(Files.exists(tempFile));
 
         List<RandomDataRecord> records = RandomDataFileUtil.readAllRecords(tempFile);
-        assertTrue(records.size() == 1);
-        assertTrue(records.get(0).integers().length == 5);
-        assertTrue(records.get(0).doubles().length == 5);
+        assertEquals(1, records.size());
+        assertEquals(5, records.get(0).integers().length);
+        assertEquals(5, records.get(0).doubles().length);
     }
 
     @Test
@@ -34,6 +39,6 @@ class RandomDataFileUtilTest {
         RandomDataFileUtil.writeRandomData(tempFile, new Random(2));
 
         List<RandomDataRecord> records = RandomDataFileUtil.readAllRecords(tempFile);
-        assertTrue(records.size() == 2);
+        assertEquals(2, records.size());
     }
 }

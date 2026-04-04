@@ -6,7 +6,6 @@
     <groupId>com.baldree</groupId>
     <artifactId>baldree-mod-2-csd420</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>baldree-mod-2-csd420</name>
 
     <properties>
         <maven.compiler.release>17</maven.compiler.release>
