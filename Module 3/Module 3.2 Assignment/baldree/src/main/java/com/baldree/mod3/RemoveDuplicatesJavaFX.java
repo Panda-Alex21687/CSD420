@@ -24,6 +24,7 @@ import javafx.stage.Stage;
  * ArrayList of 50 random integers between 1 and 20, displays the original list,
  * and then displays a new list containing the same values without duplicates.
  */
+
 public class RemoveDuplicatesJavaFX extends Application {
 
     private final TextArea originalArea = new TextArea();
@@ -39,17 +40,17 @@ public class RemoveDuplicatesJavaFX extends Application {
         titleLabel.setStyle("-fx-font-size: 16px; -fx-font-weight: bold;");
 
         Label originalLabel = new Label("Original List (50 random values from 1 to 20):");
-        Label uniqueLabel = new Label("New List with Duplicates Removed:");
+        Label uniqueLabel = new Label("List After Removing Duplicates:");
 
         originalArea.setEditable(false);
         originalArea.setWrapText(true);
-        originalArea.setPrefHeight(150);
+        originalArea.setPrefHeight(140);
 
         uniqueArea.setEditable(false);
         uniqueArea.setWrapText(true);
-        uniqueArea.setPrefHeight(150);
+        uniqueArea.setPrefHeight(140);
 
-        Button generateButton = new Button("Generate List and Remove Duplicates");
+        Button generateButton = new Button("Generate New Lists");
         generateButton.setOnAction(e -> generateLists());
 
         VBox root = new VBox(10);
@@ -64,8 +65,8 @@ public class RemoveDuplicatesJavaFX extends Application {
 
         generateLists();
 
-        Scene scene = new Scene(root, 650, 450);
-        primaryStage.setTitle("Baldree - Module 3 CSD420");
+        Scene scene = new Scene(root, 650, 420);
+        primaryStage.setTitle("Baldree - Module 3.2 CSD420");
         primaryStage.setScene(scene);
         primaryStage.show();
     }
