@@ -1,14 +1,11 @@
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+package com.baldree.mod4;
 
 import java.util.LinkedList;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
 
-/**
- * Unit tests for LinkedListTraversalBenchmark.
- * These tests focus on correctness, not performance.
- */
 public class LinkedListTraversalBenchmarkTest {
 
     @Test
