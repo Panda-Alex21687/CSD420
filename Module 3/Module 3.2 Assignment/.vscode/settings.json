@@ -1,5 +1,6 @@
 {
   "java.project.referencedLibraries": [
     "/Users/alexbaldree/Downloads/javafx-sdk-25.0.2/lib/**/*.jar"
-  ]
+  ],
+  "java.configuration.updateBuildConfiguration": "automatic"
 }

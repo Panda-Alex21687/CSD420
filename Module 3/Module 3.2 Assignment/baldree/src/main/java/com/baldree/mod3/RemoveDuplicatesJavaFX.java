@@ -13,37 +13,27 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 /**
- * Alexander Baldree
- * CSD420
- * Module 3.2
- * 04/07/2026
+ * Name: Alex Baldree
+ * Course: CSD420
+ * Module: 3
+ * Assignment: Remove Duplicates Using Generics
+ * Date: 04/07/2026
  *
  * Description:
  * This JavaFX program demonstrates the use of a generic static method that
  * removes duplicate values from an ArrayList. The program creates an original
  * ArrayList of 50 random integers between 1 and 20, displays the original list,
- * then displays a new list containing the same values without duplicates.
+ * and then displays a new list containing the same values without duplicates.
  */
-
- public class RemoveDuplicatesJavaFX extends Application {
+public class RemoveDuplicatesJavaFX extends Application {
 
     private final TextArea originalArea = new TextArea();
     private final TextArea uniqueArea = new TextArea();
 
-    /**
-     * Launches the JavaFX application.
-     *
-     * @param args command-line arguments
-     */
     public static void main(String[] args) {
         launch(args);
     }
 
-    /**
-     * Builds the JavaFX user interface and displays the stage.
-     *
-     * @param primaryStage the main application window
-     */
     @Override
     public void start(Stage primaryStage) {
         Label titleLabel = new Label("Remove Duplicates from an ArrayList");
@@ -71,10 +61,8 @@ import javafx.stage.Stage;
                 originalLabel,
                 originalArea,
                 uniqueLabel,
-                uniqueArea
-        );
+                uniqueArea);
 
-        // Generate data immediately when the program starts
         generateLists();
 
         Scene scene = new Scene(root, 650, 450);
@@ -83,11 +71,6 @@ import javafx.stage.Stage;
         primaryStage.show();
     }
 
-    /**
-     * Generates the original ArrayList with 50 random integers from 1 to 20,
-     * removes duplicates using the generic removeDuplicates method,
-     * and displays both lists in the JavaFX window.
-     */
     private void generateLists() {
         ArrayList<Integer> originalList = new ArrayList<>();
         Random random = new Random();
@@ -102,14 +85,6 @@ import javafx.stage.Stage;
         uniqueArea.setText(uniqueList.toString());
     }
 
-    /**
-     * Returns a new ArrayList containing the elements from the original list
-     * with duplicate values removed.
-     *
-     * @param <E>  the type of elements stored in the ArrayList
-     * @param list the original ArrayList
-     * @return a new ArrayList containing only unique values
-     */
     public static <E> ArrayList<E> removeDuplicates(ArrayList<E> list) {
         ArrayList<E> uniqueList = new ArrayList<>();
 
