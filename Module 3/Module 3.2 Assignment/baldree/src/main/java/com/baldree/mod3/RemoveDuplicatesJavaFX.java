@@ -13,11 +13,10 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 /**
- * Name: Alex Baldree
- * Course: CSD420
- * Module: 3
- * Assignment: Remove Duplicates Using Generics
- * Date: 04/07/2026
+ * Alexander Baldree
+ * CSD420
+ * Module 3.2 Assignment
+ * 04/07/2026
  *
  * Description:
  * This JavaFX program demonstrates the use of a generic static method that
