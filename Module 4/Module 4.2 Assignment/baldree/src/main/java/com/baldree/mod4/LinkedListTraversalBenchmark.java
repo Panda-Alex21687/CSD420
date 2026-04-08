@@ -5,58 +5,15 @@ import java.util.LinkedList;
 
 public class LinkedListTraversalBenchmark {
 
-    public static class BenchmarkResult {
-        private final int size;
-        private final long expectedSum;
-        private final long iteratorSum;
-        private final long getSum;
-        private final long iteratorTimeNanos;
-        private final long getTimeNanos;
-
-        public BenchmarkResult(int size, long expectedSum, long iteratorSum, long getSum,
-                long iteratorTimeNanos, long getTimeNanos) {
-            this.size = size;
-            this.expectedSum = expectedSum;
-            this.iteratorSum = iteratorSum;
-            this.getSum = getSum;
-            this.iteratorTimeNanos = iteratorTimeNanos;
-            this.getTimeNanos = getTimeNanos;
-        }
-
-        public int getSize() {
-            return size;
-        }
-
-        public long getExpectedSum() {
-            return expectedSum;
-        }
-
-        public long getIteratorSum() {
-            return iteratorSum;
-        }
-
-        public long getGetSum() {
-            return getSum;
-        }
-
-        public long getIteratorTimeNanos() {
-            return iteratorTimeNanos;
-        }
-
-        public long getGetTimeNanos() {
-            return getTimeNanos;
-        }
-    }
-
     public static void main(String[] args) {
-        warmUp();
+        warmUpJvm();
 
-        int[] sizes = { 50_000, 500_000 };
+        BenchmarkResult result50k = benchmark(50_000);
+        BenchmarkResult result500k = benchmark(500_000);
 
-        for (int size : sizes) {
-            BenchmarkResult result = runBenchmark(size);
-            printResult(result);
-        }
+        printResult(result50k);
+        printResult(result500k);
+        printComparison(result50k, result500k);
     }
 
     public static LinkedList<Integer> buildList(int size) {
@@ -78,7 +35,7 @@ public class LinkedListTraversalBenchmark {
         return sum;
     }
 
-    public static long traverseWithGet(LinkedList<Integer> list) {
+    public static long traverseWithGetIndex(LinkedList<Integer> list) {
         long sum = 0;
 
         for (int i = 0; i < list.size(); i++) {
@@ -92,47 +49,102 @@ public class LinkedListTraversalBenchmark {
         return (long) size * (size - 1) / 2;
     }
 
-    public static BenchmarkResult runBenchmark(int size) {
+    public static BenchmarkResult benchmark(int size) {
         LinkedList<Integer> list = buildList(size);
         long expected = expectedSum(size);
 
-        long startIterator = System.nanoTime();
-        long iteratorSum = traverseWithIterator(list);
-        long iteratorTime = System.nanoTime() - startIterator;
+        TimedResult iteratorResult = measureIterator(list);
+        TimedResult getIndexResult = measureGetIndex(list);
 
-        long startGet = System.nanoTime();
-        long getSum = traverseWithGet(list);
-        long getTime = System.nanoTime() - startGet;
-
-        if (iteratorSum != expected || getSum != expected) {
-            throw new IllegalStateException("Traversal produced an incorrect result.");
+        if (iteratorResult.sum != expected) {
+            throw new IllegalStateException("Iterator sum incorrect.");
         }
 
-        return new BenchmarkResult(size, expected, iteratorSum, getSum, iteratorTime, getTime);
+        if (getIndexResult.sum != expected) {
+            throw new IllegalStateException("get(index) sum incorrect.");
+        }
+
+        return new BenchmarkResult(
+                size,
+                iteratorResult.nanos / 1_000_000.0,
+                getIndexResult.nanos / 1_000_000.0);
     }
 
-    private static void warmUp() {
-        LinkedList<Integer> warmUpList = buildList(1_000);
+    private static void warmUpJvm() {
+        LinkedList<Integer> warmUpList = buildList(10_000);
         traverseWithIterator(warmUpList);
-        traverseWithGet(warmUpList);
+        traverseWithGetIndex(warmUpList);
+    }
+
+    private static TimedResult measureIterator(LinkedList<Integer> list) {
+        long start = System.nanoTime();
+        long sum = traverseWithIterator(list);
+        long end = System.nanoTime();
+        return new TimedResult(sum, end - start);
+    }
+
+    private static TimedResult measureGetIndex(LinkedList<Integer> list) {
+        long start = System.nanoTime();
+        long sum = traverseWithGetIndex(list);
+        long end = System.nanoTime();
+        return new TimedResult(sum, end - start);
     }
 
     private static void printResult(BenchmarkResult result) {
-        double iteratorMs = result.getIteratorTimeNanos() / 1_000_000.0;
-        double getMs = result.getGetTimeNanos() / 1_000_000.0;
-        double slowerFactor = (result.getIteratorTimeNanos() == 0)
-                ? 0.0
-                : (double) result.getGetTimeNanos() / result.getIteratorTimeNanos();
+        double differenceMs = result.getIndexMs - result.iteratorMs;
+        double slowerFactor = result.getIndexMs / result.iteratorMs;
 
+        System.out.printf("%nResults for %,d integers%n", result.size);
+        System.out.println("--------------------------------------------------");
+        System.out.printf("Iterator traversal time:   %,.3f ms%n", result.iteratorMs);
+        System.out.printf("get(index) traversal time: %,.3f ms%n", result.getIndexMs);
+        System.out.printf("Difference:                %,.3f ms%n", differenceMs);
+        System.out.printf("get(index) was about       %,.2f times slower%n", slowerFactor);
+    }
+
+    private static void printComparison(BenchmarkResult small, BenchmarkResult large) {
+        double iteratorGrowth = large.iteratorMs / small.iteratorMs;
+        double getIndexGrowth = large.getIndexMs / small.getIndexMs;
+
+        System.out.println("\nOverall Comparison");
         System.out.println("==================================================");
-        System.out.println("LinkedList size: " + result.getSize());
-        System.out.println("Expected sum: " + result.getExpectedSum());
-        System.out.println("Iterator sum: " + result.getIteratorSum());
-        System.out.println("get(index) sum: " + result.getGetSum());
-        System.out.printf("Iterator traversal time: %.3f ms%n", iteratorMs);
-        System.out.printf("get(index) traversal time: %.3f ms%n", getMs);
-        System.out.printf("get(index) was %.2f times slower than iterator.%n", slowerFactor);
-        System.out.println("==================================================");
-        System.out.println();
+        System.out.printf("Iterator growth from %,d to %,d:   %,.2f times%n",
+                small.size, large.size, iteratorGrowth);
+        System.out.printf("get(index) growth from %,d to %,d: %,.2f times%n",
+                small.size, large.size, getIndexGrowth);
+    }
+
+    private static class TimedResult {
+        private final long sum;
+        private final long nanos;
+
+        private TimedResult(long sum, long nanos) {
+            this.sum = sum;
+            this.nanos = nanos;
+        }
+    }
+
+    public static class BenchmarkResult {
+        private final int size;
+        private final double iteratorMs;
+        private final double getIndexMs;
+
+        public BenchmarkResult(int size, double iteratorMs, double getIndexMs) {
+            this.size = size;
+            this.iteratorMs = iteratorMs;
+            this.getIndexMs = getIndexMs;
+        }
+
+        public int getSize() {
+            return size;
+        }
+
+        public double getIteratorMs() {
+            return iteratorMs;
+        }
+
+        public double getGetIndexMs() {
+            return getIndexMs;
+        }
     }
 }

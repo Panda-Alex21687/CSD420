@@ -4,8 +4,8 @@
          https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.baldree</groupId>
-    <artifactId>baldree</artifactId>
+    <groupId>baldree</groupId>
+    <artifactId>module4-linkedlist-benchmark</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
@@ -29,8 +29,14 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.2.5</version>
+            </plugin>
+
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>3.1.0</version>
                 <configuration>
-                    <useModulePath>false</useModulePath>
+                    <mainClass>com.baldree.mod4.LinkedListTraversalBenchmark</mainClass>
                 </configuration>
             </plugin>
         </plugins>
