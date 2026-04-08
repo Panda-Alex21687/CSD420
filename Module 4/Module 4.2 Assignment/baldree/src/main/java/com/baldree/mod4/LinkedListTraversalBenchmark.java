@@ -6,9 +6,13 @@ import java.util.LinkedList;
 public class LinkedListTraversalBenchmark {
 
     public static void main(String[] args) {
+        System.out.println("Starting benchmark...");
         warmUpJvm();
 
+        System.out.println("\nTesting 50,000 integers...");
         BenchmarkResult result50k = benchmark(50_000);
+
+        System.out.println("\nTesting 500,000 integers...");
         BenchmarkResult result500k = benchmark(500_000);
 
         printResult(result50k);
@@ -50,10 +54,14 @@ public class LinkedListTraversalBenchmark {
     }
 
     public static BenchmarkResult benchmark(int size) {
+        System.out.println("Building list...");
         LinkedList<Integer> list = buildList(size);
         long expected = expectedSum(size);
 
+        System.out.println("Traversing with iterator...");
         TimedResult iteratorResult = measureIterator(list);
+
+        System.out.println("Traversing with get(index)...");
         TimedResult getIndexResult = measureGetIndex(list);
 
         if (iteratorResult.sum != expected) {
@@ -133,18 +141,6 @@ public class LinkedListTraversalBenchmark {
             this.size = size;
             this.iteratorMs = iteratorMs;
             this.getIndexMs = getIndexMs;
-        }
-
-        public int getSize() {
-            return size;
-        }
-
-        public double getIteratorMs() {
-            return iteratorMs;
-        }
-
-        public double getGetIndexMs() {
-            return getIndexMs;
         }
     }
 }

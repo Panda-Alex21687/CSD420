@@ -1,9 +1,8 @@
-package baldree.mod4;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
+package com.baldree.mod4;
 
 import java.util.LinkedList;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 
 public class LinkedListTraversalBenchmarkTest {
