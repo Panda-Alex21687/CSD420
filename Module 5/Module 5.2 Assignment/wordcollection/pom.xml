@@ -7,7 +7,6 @@
     <groupId>com.baldree</groupId>
     <artifactId>word-collection-assignment</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>word-collection-assignment</name>
 
     <properties>
         <maven.compiler.release>17</maven.compiler.release>
@@ -46,7 +45,7 @@
                 <artifactId>exec-maven-plugin</artifactId>
                 <version>3.3.0</version>
                 <configuration>
-                    <mainClass>com.baldree.words.WordCollectionApp</mainClass>
+                    <mainClass>com.baldree.mod5.WordCollectionApp</mainClass>
                 </configuration>
             </plugin>
         </plugins>
