@@ -79,6 +79,9 @@ public class WordCollectionUtilTest {
     void shouldThrowExceptionWhenFileDoesNotExist() {
         Path missingFile = tempDir.resolve("missing_file.txt");
 
-        assertThrows(IOException.class, () -> WordCollectionUtil.readUniqueWords(missingFile));
+        IOException exception = assertThrows(IOException.class,
+                () -> WordCollectionUtil.readUniqueWords(missingFile));
+
+        assertTrue(exception.getMessage().contains("missing_file"));
     }
 }
