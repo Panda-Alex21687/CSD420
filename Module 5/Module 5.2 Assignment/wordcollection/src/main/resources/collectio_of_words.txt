@@ -1,0 +1,6 @@
+Java collections are useful.
+Sets remove duplicate words.
+Maps store key value pairs.
+Java sets are efficient.
+Collections help organize data.
+Duplicate words should appear only once.
