@@ -1,18 +1,17 @@
 package com.baldree.mod6;
 
-import java.util.Arrays;
 import java.util.Comparator;
 
-/**
- * This class tests the Bubble_Sort methods.
- */
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import org.junit.jupiter.api.Test;
+
 public class Bubble_Sort_Test {
 
     static class Student {
-        private String name;
-        private double gpa;
+        private final String name;
+        private final double gpa;
 
-        public Student(String name, double gpa) {
+        Student(String name, double gpa) {
             this.name = name;
             this.gpa = gpa;
         }
@@ -26,33 +25,28 @@ public class Bubble_Sort_Test {
         }
     }
 
-    public static void main(String[] args) {
-        testComparableWithIntegers();
-        testComparableWithStrings();
-        testComparatorWithStudentsByGpa();
-        testComparatorWithStudentsByName();
-        testEmptyArray();
-
-        System.out.println("All tests passed successfully.");
-    }
-
-    public static void testComparableWithIntegers() {
+    @Test
+    void testComparableWithIntegers() {
         Integer[] numbers = { 5, 2, 9, 1, 3 };
         Integer[] expected = { 1, 2, 3, 5, 9 };
 
         Bubble_Sort.bubbleSort(numbers);
-        checkArray(expected, numbers, "Comparable integer test");
+
+        assertArrayEquals(expected, numbers);
     }
 
-    public static void testComparableWithStrings() {
+    @Test
+    void testComparableWithStrings() {
         String[] words = { "pear", "apple", "orange", "banana" };
         String[] expected = { "apple", "banana", "orange", "pear" };
 
         Bubble_Sort.bubbleSort(words);
-        checkArray(expected, words, "Comparable string test");
+
+        assertArrayEquals(expected, words);
     }
 
-    public static void testComparatorWithStudentsByGpa() {
+    @Test
+    void testComparatorWithStudentsByGpa() {
         Student[] students = {
                 new Student("Alex", 3.2),
                 new Student("Jordan", 3.9),
@@ -68,10 +62,11 @@ public class Bubble_Sort_Test {
         };
 
         String[] expected = { "Taylor", "Alex", "Jordan" };
-        checkArray(expected, actual, "Comparator GPA test");
+        assertArrayEquals(expected, actual);
     }
 
-    public static void testComparatorWithStudentsByName() {
+    @Test
+    void testComparatorWithStudentsByName() {
         Student[] students = {
                 new Student("Chris", 3.1),
                 new Student("Alex", 3.8),
@@ -87,24 +82,16 @@ public class Bubble_Sort_Test {
         };
 
         String[] expected = { "Alex", "Brianna", "Chris" };
-        checkArray(expected, actual, "Comparator name test");
+        assertArrayEquals(expected, actual);
     }
 
-    public static void testEmptyArray() {
+    @Test
+    void testEmptyArray() {
         Integer[] numbers = {};
         Integer[] expected = {};
 
         Bubble_Sort.bubbleSort(numbers);
-        checkArray(expected, numbers, "Empty array test");
-    }
 
-    public static <T> void checkArray(T[] expected, T[] actual, String testName) {
-        if (Arrays.equals(expected, actual)) {
-            System.out.println(testName + " passed.");
-        } else {
-            System.out.println(testName + " failed.");
-            System.out.println("Expected: " + Arrays.toString(expected));
-            System.out.println("Actual:   " + Arrays.toString(actual));
-        }
+        assertArrayEquals(expected, numbers);
     }
 }
