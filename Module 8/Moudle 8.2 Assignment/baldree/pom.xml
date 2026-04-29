@@ -5,15 +5,14 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.baldree</groupId>
-    <artifactId>module7-three-threads</artifactId>
+    <artifactId>module8-three-threads</artifactId>
     <version>1.0-SNAPSHOT</version>
 
-    <properties>
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
-        <javafx.version>21.0.2</javafx.version>
-        <junit.version>5.10.3</junit.version>
-    </properties>
+ <properties>
+    <maven.compiler.release>17</maven.compiler.release>
+    <javafx.version>21.0.2</javafx.version>
+    <junit.version>5.10.3</junit.version>
+</properties>
 
     <dependencies>
         <dependency>
