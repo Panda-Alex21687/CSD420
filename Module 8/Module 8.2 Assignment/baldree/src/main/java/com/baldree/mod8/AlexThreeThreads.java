@@ -82,8 +82,6 @@ public class AlexThreeThreads extends Application {
             String text = Character.toString(character);
 
             Platform.runLater(() -> textArea.appendText(text));
-
-            Thread.yield();
         }
 
         if (completedThreads.incrementAndGet() == 3) {
