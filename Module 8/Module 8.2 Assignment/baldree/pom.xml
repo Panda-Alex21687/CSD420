@@ -8,11 +8,11 @@
     <artifactId>module8-three-threads</artifactId>
     <version>1.0-SNAPSHOT</version>
 
- <properties>
-    <maven.compiler.release>17</maven.compiler.release>
-    <javafx.version>21.0.2</javafx.version>
-    <junit.version>5.10.3</junit.version>
-</properties>
+    <properties>
+        <maven.compiler.release>17</maven.compiler.release>
+        <javafx.version>21.0.2</javafx.version>
+        <junit.version>5.10.3</junit.version>
+    </properties>
 
     <dependencies>
         <dependency>
@@ -36,7 +36,7 @@
                 <artifactId>javafx-maven-plugin</artifactId>
                 <version>0.0.8</version>
                 <configuration>
-                    <mainClass>com.baldree.mod7.AlexThreeThreads</mainClass>
+                    <mainClass>com.baldree.mod8.AlexThreeThreads</mainClass>
                 </configuration>
             </plugin>
 
