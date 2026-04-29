@@ -12,8 +12,8 @@ import javafx.stage.Stage;
  * Two circles use a style class for white fill and black stroke.
  * The other circles use CSS IDs to display red and green circles.
  *
- * Author: Alex Baldree
- * Assignment: Module 7 Programming Assignment
+ * Alexander Baldree
+ * Module 7 Programming Assignment
  */
 public class CircleStyleApp extends Application {
 

@@ -16,8 +16,8 @@ import javafx.scene.shape.Circle;
  * These tests verify that the JavaFX program creates four circles
  * and applies the correct CSS class and IDs.
  *
- * Author: Alex Baldree
- * Assignment: Module 7 Programming Assignment
+ * Alexander Baldree
+ * Module 7 Programming Assignment
  */
 public class CircleStyleAppTest {
 
