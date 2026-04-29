@@ -1,0 +1,25 @@
+/*
+ * File: mystyle.css
+ * Author: Alex Baldree
+ * Assignment: Module 7 Programming Assignment
+ * Purpose: Defines reusable JavaFX CSS styles for circles.
+ */
+
+/* Style class for circles with white fill and black stroke */
+.plainCircle {
+    -fx-fill: white;
+    -fx-stroke: black;
+    -fx-stroke-width: 2;
+}
+
+/* ID for a red circle */
+#redCircle {
+    -fx-fill: red;
+    -fx-stroke: red;
+}
+
+/* ID for a green circle */
+#greenCircle {
+    -fx-fill: green;
+    -fx-stroke: green;
+}
