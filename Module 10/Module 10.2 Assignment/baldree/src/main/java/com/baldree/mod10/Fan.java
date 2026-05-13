@@ -1,10 +1,10 @@
 package com.baldree.mod10;
 
 public class Fan {
-    private int id;
-    private String firstName;
-    private String lastName;
-    private String favoriteTeam;
+    private final int id;
+    private final String firstName;
+    private final String lastName;
+    private final String favoriteTeam;
 
     public Fan(int id, String firstName, String lastName, String favoriteTeam) {
         this.id = id;
